@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="fishjs/vue.min.js"></script>
+
+</head>
+
+<body>
+    <div id="app">
+        <!-- <textarea v-model="message" placeholder="请输入。。。"></textarea>
+        <p>您输入的内容是：</p>
+        <p style="white-space: pre">
+            {{message}}
+        </p>
+        <p>@input用法</p>
+        <textarea @input="handleInput" placeholder="请输入。。。"></textarea>
+        <p>您输入的内容是：</p>
+        <p style="white-space: pre">
+            {{msg}}
+        </p> -->
+        <h3>6.3</h3>
+        <input type="text" v-model-trim="message" />
+        <p>{{message}}</p>
+    </div>
+</body>
+<script>
+    var app = new Vue({
+        el: "#app",
+        data: {
+            message: "",
+            msg: ""
+        },
+        methods:{
+            handleInput: function(e){
+                this.msg = e.target.value;
+            }
+        }
+    });
+</script>
+
+</html>
