@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="fishjs/vue.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        <child-component>
+            <p>反对反对反对1</p>
+            <p>反对反对反对2</p>
+        </child-component>
+
+        <!-- <div>
+            <slot>
+                <p>如果父组件无内容，默认显示</p>
+            </slot>
+        </div> -->
+    </div>
+</body>
+<script>
+    Vue.component("child-component",{
+        template: '<div>\
+            <slot>\
+                <p>如果父组件无内容，默认显示</p>\
+            </slot>\
+        </div>',
+    })
+    var app = new Vue({
+        el: "#app"
+    });
+</script>
+</html>

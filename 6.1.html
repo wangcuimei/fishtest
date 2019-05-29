@@ -10,7 +10,7 @@
 
 <body>
     <div id="app">
-        <!-- <textarea v-model="message" placeholder="请输入。。。"></textarea>
+        <textarea v-model="message" placeholder="请输入。。。"></textarea>
         <p>您输入的内容是：</p>
         <p style="white-space: pre">
             {{message}}
@@ -20,9 +20,9 @@
         <p>您输入的内容是：</p>
         <p style="white-space: pre">
             {{msg}}
-        </p> -->
+        </p>
         <h3>6.3</h3>
-        <input type="text" v-model-trim="message" />
+        <input type="text" v-model="message" />
         <p>{{message}}</p>
     </div>
 </body>
@@ -32,8 +32,8 @@
         data: {
             message: "",
             msg: ""
-        },
-        methods:{
+        }
+        ,methods:{
             handleInput: function(e){
                 this.msg = e.target.value;
             }
