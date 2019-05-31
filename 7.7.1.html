@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数字输入框组件</title>
+    <script src="fishjs/vue.min.js"></script>
+    <script src="fishjs/input-number.js"></script>
+</head>
+<body>
+    <div id="app">
+        <p>
+            <input type="text" v-model="value" />
+            <span>{{value}}</span>
+        </p>
+        <input-number v-model="value" :max="10" :min="0"></input-number>
+
+        <script type="text/x-template" id="my-number">
+            <div class="input-number">
+                    <input type="text" :value="currentValue"
+                        @change="handleChange">
+                    <button @click="handleDown" :disabled="currentValue <=min"> - </button>
+                    <button @click="handleUp" :disabled="currentValue >=max"> + </button>
+            </div>
+        </script>
+    </div>
+</body>
+<script>
+   var app = new Vue({
+       el: "#app",
+       data: {
+           value: 5
+       }
+   });
+</script>
+</html>

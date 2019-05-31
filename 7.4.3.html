@@ -8,24 +8,49 @@
 <body>
     <div id="app">
         <child-component>
-            <p>反对反对反对1</p>
-            <p>反对反对反对2</p>
+            <h2 slot="header">标题</h2>
+            <p>正文</p>
+            <p>更多的正文内容</p>
+            <!--把这里注释掉，模板中的slot就展示了-->
+            <!-- <div slot="footer"></div> -->
         </child-component>
 
-        <!-- <div>
-            <slot>
-                <p>如果父组件无内容，默认显示</p>
-            </slot>
+        <!-- <div class="container">
+            <div class="header">
+                <slot name="header">模板中的标题</slot>
+            </div>
+            <div class="main">
+                <slot>模板中的正文内容</slot>
+            </div>
+            <div class="footer">
+                <slot name="footer">模板中的底部信息</slot>
+            </div>
         </div> -->
     </div>
 </body>
 <script>
     Vue.component("child-component",{
-        template: '<div>\
-            <slot>\
-                <p>如果父组件无内容，默认显示</p>\
-            </slot>\
-        </div>',
+        template: '\
+        <div class="container">\
+            <div class="header">\
+                <slot name="header">模板中的标题</slot>\
+            </div>\
+            <div class="main">\
+                <slot>模板中的正文内容</slot>\
+            </div>\
+            <div class="footer">\
+                <slot name="footer">模板中的底部信息</slot>\
+            </div>\
+        </div>\
+        ',
+        mounted: function(){
+            var header = this.$slots.header;
+            var main = this.$slots.default;
+            var footer = this.$slots.footer;
+
+            console.log(footer);
+            console.log(footer[0].elm.innerHTML);
+        }
     })
     var app = new Vue({
         el: "#app"
