@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+<html style="padding: 30px;background-color:#fff;">
+<head>
+    <meta charset="utf-8" />
+    <title>提示</title>
+    <link rel="stylesheet" type="text/css" href="http://test3.ms.hyfiles.com/ms/lib/style/v.12/css/!!css-reset.css,layout-backstage.css,iconfont.css,form.css,form-grid.css,tab.css,status-color.css,table.css">
+    <link rel="stylesheet" type="text/css" href="http://test3.ms.hyfiles.com/!!lib/style/css/info-grid.css,lib/style/css/timeline.css,page/info/css/index.css,lib/style/css/table.css,lib/style/css/status-color.css,page/order/main/index.css,page/assign-tour/info.css">
+    <link rel="stylesheet" type="text/css" href="http://test3.ms.hyfiles.com/!!lib/style/css/info-grid.css,lib/style/css/timeline.css,page/info/css/index.css,lib/style/css/table.css,lib/style/css/status-color.css,page/order/main/index.css">
+    <!--[if lt IE 9]><script type="text/javascript" src="http://ms.hyfiles.com/lib/style/html5.js" charset="utf-8"></script><![endif]-->
+</head>
+<body style="background-color:#fff;">
+    <p class="span-group">
+        <span class="span1">
+            <span class="key">Hello World</span>
+            <input class="input value" type="text" 
+                data-control="birthday" />
+        </span>
+    </p>
+    <script type="text/javascript" src="http://test3.ms.hyfiles.com/ms/lib/sea/v.2!!index.js,css.js,version.js,combo.js"></script>
+    <script type="text/javascript" src="http://test3.ms.hyfiles.com/ms!!lib/version.js,part/version.js,page/version.js,data/version.js?"></script>
+
+    <script type="text/javascript">
+        seajs.config({
+            base: "http://test3.ms.hyfiles.com/ms",
+            //base: "http://127.0.0.1:9999/ms",
+            comboSyntax: ['!!', ',']
+        });
+
+        // 加载入口模块
+        seajs.use(["lib/control-loader/index"], function (loader) {
+            loader();
+        });
+    </script>
+</body>
+</html>

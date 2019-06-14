@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>面向对象的基类</title>
+    <script type="text/javascript" src="http://test3.ms.hyfiles.com/ms/lib/sea/v.2!!index.js,css.js,version.js,combo.js"></script>
+    <script type="text/javascript" src="http://test3.ms.hyfiles.com/ms!!lib/version.js,part/version.js,page/version.js,data/version.js?"></script>
+    <script src="lib/class/v.0/index.js"></script>
+    <script src="lib/jquery/v.0/index.js"></script>
+</head>
+<body>
+    <h2>Hello world</h2>
+</body>
+<script type="text/javascript">
+    seajs.config({
+        base: "http://test3.ms.hyfiles.com/ms",
+        comboSyntax: ['!!', ','],
+        masterDomain: "http://test3.hytours.com"
+    });
+
+    // 加载入口模块
+    seajs.use(["lib/control-loader/index"], function (loader) {
+        loader();
+    });
+</script>
+<script>
+
+var Person = Class.extend({
+        init: function(name){
+            this.name = name;
+        },
+        say: function(){
+            console.log("我叫"+name);
+        },
+        play: function(){
+            console.log("我要浪去了");
+        }
+    });
+    var Coder = Person.extend({
+        say: function(){
+            this._super();
+            console.log("我是一名程序员");
+        }
+    });
+
+    var fish = new Coder("fish");
+    fish.say();
+    fish.play();
+
+
+</script>
+</html>
