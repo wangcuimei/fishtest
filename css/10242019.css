@@ -1,0 +1,37 @@
+body {
+  font-size: 12px;
+  font-family: SimSun;
+  padding: 0px;
+}
+
+.rostnum {
+  overflow: auto;
+  margin: 20px auto;
+  width: 860px;
+}
+
+.table {
+  display: table;
+}
+
+.row {
+  display: table-row;
+}
+
+.cell {
+  display: table-cell;
+  vertical-align: middle;
+  background-color: beige;
+}
+
+.round_one {
+  margin: 10px;
+  border: 1px dashed rgba(220, 221, 222, 1);
+  padding: 15px;
+  border-radius: 10%;
+
+  width: 400px;
+  height: 400px;
+  display: block;
+  background-color: cadetblue;
+}

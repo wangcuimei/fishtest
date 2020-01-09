@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script src="js/vue.min.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <child-component></child-component>
+  </div>
+</body>
+<script>
+  Vue.component("child-component", function (resolve, reject) {
+    window.setTimeout(function () {
+      resolve({
+        template: '<div>我是异步加载的</div>'
+      }, 150000);
+    });
+  });
+  var app = new Vue({
+    el: "#app"
+  });
+</script>
+
+</html>

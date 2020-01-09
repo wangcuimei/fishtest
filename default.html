@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="css/10242019.css" rel="stylesheet" />
+  <title>Document</title>
+  <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+</head>
+
+<body>
+  <div class="rostnum">
+    <div class="table" id="roundTable">
+      <div class="row" id="roundRow">
+        <div class="cell" id="roundCell">
+          <div class="round_one"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+<script>
+  $(document).ready(function () {
+    init();
+  });
+
+  function init() {
+    var round_table_num = 5;
+    var round_row_table_num = 3;
+    var round_table_seat_num = 4;
+
+
+    var rowNum = round_table_num % round_row_table_num > 0 ? parseInt(round_table_num / round_row_table_num) + 1 :
+      parseInt(round_table_num / round_row_table_num);
+
+    var rowHtml = "";
+    for (var m = 1; m <= rowNum; m++) {
+      var columnNum = round_row_table_num;
+      columnNum = m == 1 ? columnNum - 1 : columnNum;
+      var currentRowHtml = "";
+      for (var n = 1; n <= columnNum; n++) {
+        if ((rowNum - 1) * round_row_table_num + n > round_table_num) {
+          break;
+        }
+        currentRowHtml += '<div class="cell">' + $("#roundCell").clone().removeAttr("id").html() + '</div>';
+      }
+      if (m == 1) {
+        $("#roundRow").append(currentRowHtml);
+      } else {
+        currentRowHtml = '<div class="row">' + currentRowHtml + '</div>';
+        $("#roundRow").after(currentRowHtml);
+      }
+    }
+
+
+  }
+</script>
+
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>组件详解</title>
+  <script src="js/vue.min.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <p>msg：{{message}}</p>
+    <my-component ref="comA"></my-component>
+  </div>
+</body>
+<script>
+  Vue.component('my-component', {
+    template: '<button @click="clickMe">click me</button>',
+    data: function () {
+      return {
+        count: 1
+      };
+    },
+    methods: {
+      clickMe: function (e) {
+        this.$parent.message = '来自my-component的第' + this.count + '次点击';
+        this.count++;
+      }
+    }
+  });
+  new Vue({
+    el: '#app',
+    data: {
+      message: ''
+    },
+    methods: {
+      handleRef: function () {
+        var msg = this.$refs.comA.message;
+        console.log(msg);
+      }
+    }
+  });
+</script>
+
+</html>

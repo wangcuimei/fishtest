@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script src="js/vue.min.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <child-component>
+      <p>分发的内容</p>
+      <p>更多分发的内容</p>
+      <p slot="top"></p>
+      <p slot="bottom">底部</p>
+      <h3>hello world</h3>
+    </child-component>
+
+  </div>
+</body>
+<script>
+  Vue.component("child-component", {
+    template: '<div class="test">\
+      <div><slot>hello world</slot></div>\
+        <div><slot name="top">template top内容</slot></div>\
+        <div><slot name="bottom">template 底部</slot></div>\
+      </div>',
+  })
+  var app = new Vue({
+    el: "#app"
+  });
+</script>
+
+</html>

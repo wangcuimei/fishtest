@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>组件</title>
+  <script src="../js/vue.min.js"></script>
+</head>
+<style>
+  .default {
+    display: inline-block;
+    line-height: 1;
+    white-space: nowrap;
+    cursor: pointer;
+    background: #fff;
+    border: 1px solid #dcdfe6;
+    color: #606266;
+    -webkit-appearance: none;
+    text-align: center;
+    box-sizing: border-box;
+    outline: none;
+    margin: 0;
+    transition: .1s;
+    font-weight: 500;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    padding: 12px 20px;
+    font-size: 14px;
+    border-radius: 4px;
+  }
+
+  .login {
+    color: #fff;
+    background-color: #67c23a;
+    border-color: #67c23a
+  }
+
+  .register {
+    color: #fff;
+    background-color: #cf9236;
+    border-color: #cf9236
+  }
+</style>
+
+<body>
+  <div id="app">
+    <parent />
+  </div>
+</body>
+<script>
+  Vue.component('myBtn', {
+    template: '\
+    <button class="default" :class="type">\
+      <slot>Button按钮</slot>\
+    </button>',
+    props: ["type"]
+  });
+  var parent = {
+    template: '我是parent组件\
+  <div>\
+    <my-btn type="login">登陆1</my-btn>\
+    <my-btn type="register">注册1</my-btn>\
+    <my-btn></my-btn>\
+  </div>',
+    // data() {
+    //   return {
+    //     "login": "login",
+    //     "register": "register"
+    //   }
+    // }
+  };
+  var app = new Vue({
+    el: "#app",
+    components: {
+      parent: parent
+    }
+  });
+</script>
+
+</html>

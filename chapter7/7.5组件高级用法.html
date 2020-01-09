@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="js/vue.min.js"></script>
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <child-component :count="1"></child-component>
+
+    <script id="myTemp" type="text/x-template">
+      <div class="child">
+        <child-component :count="count+1" v-if="count<3"></child-component>
+      </div>
+    </script>
+  </div>
+</body>
+<script>
+  Vue.component('child-component', {
+    props: {
+      count: {
+        type: Number,
+        default: 1
+      }
+    },
+    template: '#myTemp'
+  });
+
+  var app = new Vue({
+    el: '#app',
+  });
+</script>
+
+</html>

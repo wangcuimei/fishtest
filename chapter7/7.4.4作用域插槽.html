@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="js/vue.min.js"></script>
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <my-list :books="books">
+      <template slot="book" scope="obj">
+        <li>{{obj.bookName}}</li>
+      </template>
+    </my-list>
+  </div>
+</body>
+<script>
+  Vue.component('my-list', {
+    props: {
+      books: {
+        type: Array,
+        default: function () {
+          return [];
+        }
+      }
+    },
+    template: '<ul>\
+    <slot name="book" v-for="book in books" :book-name="book.name"></slot>\
+  </ul>',
+
+  });
+  var app = new Vue({
+    el: "#app",
+    data: {
+      books: [{
+        name: '《Vue.js实战11》'
+      }, {
+        name: '《十万个为什么》'
+      }, {
+        name: 'JavaScript高级程序设计'
+      }]
+    }
+  });
+</script>
+
+</html>

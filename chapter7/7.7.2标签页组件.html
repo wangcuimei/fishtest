@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>数字输入框组件</title>
+  <link rel="stylesheet" type="text/css" href="../css/style-7.7.2.css" />
+  <script src="../js/vue.min.js"></script>
+  <script src="../fishjs/pane-7.7.2.js"></script>
+  <script src="../fishjs/tabs-7.7.2.js"></script>
+</head>
+
+<body>
+  <div id="app" v-cloak>
+    <tabs v-model="activeKey">
+      <pane label="标签一" name="1">
+        标签一的内容
+      </pane>
+      <pane label="标签二" name="2">
+        标签二的内容
+      </pane>
+      <pane label="标签三" name="3">
+        标签三的内容
+      </pane>
+    </tabs>
+  </div>
+</body>
+<script>
+  var app = new Vue({
+    el: "#app",
+    data() {
+      return {
+        activeKey: '1'
+      };
+    }
+  });
+</script>
+
+</html>
