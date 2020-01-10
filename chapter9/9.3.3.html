@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="../js/vue.min.js"></script>
+  <title>使用javascript代替模板</title>
+</head>
+
+<body>
+  <div id="app">
+    <ele :list="list"></ele>
+    <button @click="search">展示列表</button>
+    <!-- <ul>
+      <li>《Vue.js实战》</li>
+      <li>《Vue.js实战》欸奥</li>
+      <li>《Vue.js实战》版本</li>
+    </ul> -->
+  </div>
+  <script>
+    Vue.component('ele', {
+      render: function (createElement) {
+        if (!this.list || this.list.length <= 0) {
+          return createElement('p', '列表信息空');
+        }
+        return createElement('ul',
+          this.list.map(function (item) {
+            return createElement('li', item);
+          })
+        );
+      },
+      props: {
+        list: {
+          type: Array,
+          default: function () {
+            return [];
+          }
+        }
+      }
+    });
+    var app = new Vue({
+      el: "#app",
+      data: {
+        list: []
+      },
+      methods: {
+        search: function () {
+          this.list = ["《Vue.js实战》",
+            "《Vue.js实战》fdfd", "《Vue.js实战》u哦九分东方"
+          ];
+          //this.list = [];
+          console.log('点击了按钮');
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="../js/vue.min.js"></script>
+  <title>render函数约束</title>
+</head>
+
+<body>
+  <div id="app">
+    <ele></ele>
+    <!-- <div id="element">文本内容
+      <p name="myp">我是P的文本内容</p>
+    </div> -->
+  </div>
+  <script>
+    var Child = {
+      render: function (createElement) {
+        return createElement('p', {
+          attrs: {
+            name: 'myp'
+          }
+        }, '我是P的文本内容');
+      }
+    };
+    Vue.component('ele', {
+      render: function (createElement) {
+        return createElement('div',
+          // Array.apply(null, {
+          //   length: 5
+          // }).map(function () {
+          //   return createElement(Child);
+          // })
+          [
+            createElement(Child),
+            createElement(Child),
+            createElement(Child)
+          ]
+        );
+      }
+    });
+    var app = new Vue({
+      el: "#app"
+    });
+  </script>
+</body>
+
+</html>

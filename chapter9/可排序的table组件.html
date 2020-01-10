@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="../js/vue.min.js"></script>
+  <script src="../fishjs/table-9.6.js"></script>
+  <link rel="stylesheet" type="text/css" href="../css/style.9.6.css">
+  <title>可排序的table组件</title>
+</head>
+
+<body>
+  <div id="app" v-cloak>
+    <v-table :data="data" :columns="columns"></v-table>
+    <button @click="handleAddData">添加数据</button>
+  </div>
+  <script>
+    var app = new Vue({
+      el: "#app",
+      data: {
+        columns: [{
+            title: '姓名',
+            key: 'name'
+          },
+          {
+            title: '年龄',
+            key: 'age',
+            sortable: true
+          },
+          {
+            title: '出生日期',
+            key: 'birthday',
+            sortable: true
+          },
+          {
+            title: '地址',
+            key: 'address'
+          }
+        ],
+        data: [{
+            name: "校长",
+            age: 88,
+            birthday: "1945-01-12",
+            address: "北京朝阳"
+          },
+          {
+            name: "张三丰",
+            age: 23,
+            birthday: "1991-06-12",
+            address: "北京朝阳"
+          },
+          {
+            name: "王小利",
+            age: 18,
+            birthday: "1957-11-02",
+            address: "北京朝阳"
+          },
+        ]
+      },
+      methods: {
+        handleAddData: function () {
+          this.data.push({
+            name: "长公主",
+            age: 18,
+            birthday: "1957-11-02",
+            address: "北京海淀"
+          });
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>
