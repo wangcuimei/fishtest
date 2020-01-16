@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>nextTick用法</title>
+  <script src="js/vue.min.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <!-- <div class="app">
+      <input type="text" v-show="isShow" ref="input" />
+    </div> -->
+  </div>
+</body>
+<script>
+  var App = {
+    data() {
+      return {
+        isShow: false
+      }
+    },
+    template: '<div class="app">\
+      <input type="text" v-show="isShow" ref="input" />\
+    </div>',
+    mounted: function () {
+      this.isShow = true;
+      console.log(this.$refs.input);
+      //$nextTick()
+      //是在DOM更新循环结束之后执行回调函数， 在修改数据之后使用此方法 在回调中获取到更新之后的DOM
+      this.$nextTick(function () { // 等价写法： () => {
+        this.$refs.input.focus();
+      });
+    }
+  };
+  var app = new Vue({
+    el: "#app",
+    components: {
+      App
+    },
+    template: '<App />'
+  });
+</script>
+</script>
+
+</html>

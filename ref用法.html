@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>ref用法</title>
+  <script src="js/vue.min.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <subCom></subCom>
+  </div>
+</body>
+<script>
+  Vue.component('subCom', {
+    template: '<button @click="clickMe">我是按钮3</button>',
+    methods: {
+      clickMe: function () {
+        console.log("你点击了按钮3");
+      }
+    }
+  });
+  var App = {
+    template: '<div>\
+      <button ref="btn">我是按钮1</button>\
+      <button ref="btn2">我是按钮2</button>\
+      <subCom ref="abc"></subCom>\
+    </div>',
+    mounted: function () {
+      //给标签绑定ref='xxx'属性，使用this.$refs.xxx获取原生的js Dom对象
+      //ref属性值不能重复，重复后，后面的会覆盖前面的
+      console.log(this.$refs.btn);
+      console.log(this.$refs.btn2);
+
+      //如果是给组件绑定ref属性，那么shi.$refs.xxx获取的是当前的组件对象。
+      console.log(this.$refs.abc);
+      console.log(this.$refs.abc.clickMe());
+    }
+  };
+  var app = new Vue({
+    el: "#app",
+    data: {
+      msg: ""
+    },
+    components: {
+      App
+    },
+    template: '<App />'
+  });
+</script>
+</script>
+
+</html>
